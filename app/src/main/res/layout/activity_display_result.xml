@@ -13,19 +13,11 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Input Text"
-        android:id="@+id/inputText"
-        android:layout_alignParentTop = "true"
-        android:layout_alignParentLeft = "true"
-        />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/result"
         android:id="@+id/translatedText"
-        android:layout_below="@+id/inputText"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="20dp"
         android:layout_centerHorizontal="true"
         />
 
@@ -44,7 +36,8 @@
         android:layout_height="wrap_content"
         android:src="@drawable/pictureresult"
         android:id="@+id/resultView"
-        android:layout_alignParentTop="true"
+        android:layout_below="@+id/translatedText"
+        android:layout_marginTop="10dp"
         android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

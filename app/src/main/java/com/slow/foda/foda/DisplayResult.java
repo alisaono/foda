@@ -19,6 +19,9 @@ import java.io.BufferedReader;
 
 public class DisplayResult extends AppCompatActivity {
 
+    ImageView resultImage;
+    Bitmap imageBitmap;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,8 +31,6 @@ public class DisplayResult extends AppCompatActivity {
     }
     public void startOver(View view) {
         Intent backOriginal = new Intent(this, MainActivity.class);
-        //EditText theEditText = (EditText) findViewById(R.id.edit_message);
-        //String message = theEditText.getText().toString();
         startActivity(backOriginal);
     }
 
@@ -37,25 +38,17 @@ public class DisplayResult extends AppCompatActivity {
         TextView transText = (TextView)findViewById(R.id.translatedText);
         transText.setText(searchText);
 
-
         Log.d("search", "**** APP START");
 
-        //final TextView result = (TextView) findViewById(R.id.textView1);
-        final ImageView iv = (ImageView) findViewById(R.id.resultView);
+        resultImage = (ImageView) findViewById(R.id.resultView);
 
         Log.d("search", "Searching for :" + searchText);
-        //result.setText("Searching for :" + str);
 
+        Thread thread = new Thread(new Runnable() {
 
-        Thread thread = new Thread(new Runnable()
-        {
             @Override
-            public void run()
-            {
-
+            public void run() {
                 try {
-
-
                     // looking for
                     String strNoSpaces = searchText.replace(" ", "+");
 
@@ -68,22 +61,11 @@ public class DisplayResult extends AppCompatActivity {
                     String url2 = "https://www.googleapis.com/customsearch/v1?q=" + strNoSpaces + "&key=" + key + "&cx=" + cx + "&alt=json";
                     Log.d("search", "Url = "+  url2);
                     String result2 = httpGet(url2);
-                                /*result.setText("1");
-                                //JSONObject obj =new JSONObject("2222");
-                                JSONArray array = new JSONArray(result2);
-                                result.setText("2");
-                                JSONObject obj =array.getJSONObject(0);
-                                result.setText("3");
-                                String snippet=obj.getString("snippet");
-                                result.setText("snippet");*/
                     String result3=result2.substring(14,result2.length()-1);
-                    iv.setImageBitmap(getBitmapFromURL(result3));
+                    imageBitmap = getBitmapFromURL(result3);
 
-
-
-                }
-                catch(Exception e) {
-                    System.out.println("Error1 " + e.getMessage());
+                } catch(Exception e) {
+                    Log.e("Exception",e.getMessage());
                 }
 
             }
@@ -105,6 +87,7 @@ public class DisplayResult extends AppCompatActivity {
                     return null;
                 }
             }
+
             private String httpGet(String urlStr) throws IOException {
 
                 URL url = new URL(urlStr);
@@ -124,26 +107,26 @@ public class DisplayResult extends AppCompatActivity {
                 while((line = rd.readLine()) != null) {
                     String temp=rd.readLine();
                     Log.d("search", "Line =" + temp);
-                        /*int i=temp.indexOf("snippet");
-                        if (i!=-1){
-                            des=temp.substring(13)+";";
-                        }*/
                     int i=temp.indexOf("src");
                     if (i!=-1){
-                        int len=temp.length();
                         return temp;
                     }
                     sb.append(line+"\n");
 
-
                 }
                 rd.close();
                 return output;
-                    /*conn.disconnect();
-                    return sb.toString();*/
             }
         });
 
         thread.start();
+
+        try {
+            thread.join();
+            resultImage.setImageBitmap(imageBitmap);
+        } catch (InterruptedException ie) {
+            Log.e("Interrupted",ie.getMessage()); //should never happen
+        }
     }
+
 }
