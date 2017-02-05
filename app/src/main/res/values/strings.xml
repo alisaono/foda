@@ -2,5 +2,6 @@
     <string name="app_name">Foda</string>
     <string name="message">Message</string>;
     <string name="capture">Capture</string>;
-    <string name="newTranslation">New Translation</string>
+    <string name="newTranslation">New Translation</string>;
+    <string name="result">Searching... </string>;
 </resources>

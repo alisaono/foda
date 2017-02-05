@@ -1,0 +1,7 @@
+#Sun Feb 05 08:23:16 EST 2017
+base.0=/Users/Kelvin/Dropbox (MIT)/MIT/Sophomore/code/hab/foda/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_1e9ee979bc5d11d80afcb9409c030b9b66be60ef
+renamed.1=classes.dex
+renamed.0=classes2.dex
+file.1=/Users/Kelvin/Dropbox (MIT)/MIT/Sophomore/code/hab/foda/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_b8ee088670887374976e8f28e802ae39f34e0daa/classes.dex
+base.1=/Users/Kelvin/Dropbox (MIT)/MIT/Sophomore/code/hab/foda/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_b8ee088670887374976e8f28e802ae39f34e0daa
+file.0=/Users/Kelvin/Dropbox (MIT)/MIT/Sophomore/code/hab/foda/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_1e9ee979bc5d11d80afcb9409c030b9b66be60ef/classes.dex

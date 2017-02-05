@@ -23,7 +23,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Translation"
+        android:text="@string/result"
         android:id="@+id/translatedText"
         android:layout_below="@+id/inputText"
         android:layout_centerHorizontal="true"
@@ -43,7 +43,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/pictureresult"
-
+        android:id="@+id/resultView"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
